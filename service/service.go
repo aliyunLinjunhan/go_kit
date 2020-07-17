@@ -1,6 +1,8 @@
 package service
 
-import "errors"
+import (
+	"errors"
+)
 
 // Service is used to
 type Service interface {
@@ -40,3 +42,6 @@ func (s ArithmeticService) Divide(a, b int) (int, error) {
 
 	return a / b, nil
 }
+
+type ServiceMiddleware func(Service) Service
+
