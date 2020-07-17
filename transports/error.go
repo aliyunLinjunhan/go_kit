@@ -3,5 +3,6 @@ package transports
 import "errors"
 
 var (
-	ErrorBadRequest = errors.New("bad request")
+	ErrorBadRequest = errors.New("invalid request parameter")
 )
+

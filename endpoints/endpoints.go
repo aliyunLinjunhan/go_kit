@@ -4,8 +4,8 @@ import (
 	"context"
 	"strings"
 
-	"go_kit/service"
 	"github.com/go-kit/kit/endpoint"
+	"go_kit/service"
 )
 
 // ArithmeticRequest define request struct
@@ -41,7 +41,7 @@ func MakeArithmeticEndpoint(svc service.Service) endpoint.Endpoint {
 		} else if strings.EqualFold(req.RequestType, "Multiply") {
 			res = svc.Multiply(a, b)
 		} else if strings.EqualFold(req.RequestType, "Divide") {
-			res, calError = svc.Divide(a, b)
+			res, err = svc.Divide(a, b)
 		} else {
 			return nil, ErrInvalidRequestType
 		}
