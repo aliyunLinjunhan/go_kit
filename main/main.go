@@ -1,4 +1,10 @@
 package main
+
+import (
+	"fmt"
+	"time"
+)
+
 //
 //import (
 //	"fmt"
@@ -74,3 +80,23 @@ package main
 //
 //
 //}
+
+func main() {
+	var user = ""
+	defer fmt.Println("main defer there")
+	go func() {
+		defer func() {
+			fmt.Println("defer here")
+		}()
+		defer func() {
+			fmt.Println("defer here two")
+		}()
+
+		if user == "" {
+			panic("should set user env.")
+		}
+	}()
+
+	time.Sleep(1 * time.Second)
+	fmt.Println("get result \r\n")
+}
